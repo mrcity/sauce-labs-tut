@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sauce OnDemand + Perl = Cross-platform, Cross-browser Web & Mobile Testing!</title>
+<meta charset='utf-8'><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link href='big.css' rel='stylesheet' type='text/css' />
+<style>
+  .new-shiny { background: #aaaaaa; }
+</style>
+<script src='big.js'></script></head><body>
+
+<div><strong></strong>Sauce OnDemand<br /><em>+ Perl</em><br />= Cross-platform,<br />Cross-browser<br /><strong>Web & Mobile Testing!</strong></div>
+<div>By <a href="http://goshtastic.blogspot.com">Stephen Wylie</a><br /><br />Go to <a href="http://openbrite.com/sauce-perl">http://openbrite.com/ sauce-perl</a> to follow along.</div>
+<div><em>PLEASE</em> interrupt if you have questions!</div>
+<div>(Use <em>left</em> and <em>right</em> arrows to navigate. Links have a <a href="#4">blue background</a>.)</div>
+<div>Want to test your <em>killer Web app</em>?</div>
+<div>Don't want to shell out <strong>mounds of cash</strong></div>
+<div class="center"><img src="racks-mess.jpg" /><em>building a data center?</em></div>
+<div>Afraid of what your <strong>test team</strong> may look like</div>
+<div class="center"><img src="monkeys.jpg" /><strong>when it's time to test on</strong> <em>multiple browsers</em><strong>?</strong></div>
+<div>Lucky for you, the <strong>21st century</strong> has brought us</div>
+<div class="center"><img src="saucelabs-logo.png" /></div>
+<div>Sauce Labs provides <strong>Sauce On-Demand</strong>, which is an <em>Amazon EC2-based</em> solution!</div>
+<div>You're liberated from <strong>buying tons of hardware</strong></div>
+<div>and it <em>frees</em> your test experts <em>to focus on developing automation</em>.</div>
+<div>One hidden benefit: as VMs are created <strong>on-demand</strong>, there is no <em>state data, cookies,</em> or <em>goo leftover from previous tests</em>, thus</div>
+<div><strong>every environment</strong> will give you the <em>same experience each time.</em></div>
+<div>Run tests <em>automatically</em> or even <em>manually</em> in many different <strong>browser & OS combos</strong>.</div>
+<div>Here's an example of a wide variety of tests:</div>
+<div class="center"><img src="lotsa-sauce.png" /></div>
+<div>Plenty of documentation will help you get started using Sauce Connect with <em>many languages</em>.</div>
+<div>To really get the most out of Sauce, though,</div>
+<div>we <strong>need to explore</strong> the <em>Selenium WebDriver</em>.</div>
+<div>The <em>Selenium WebDriver</em> presents you with a standard <em>API</em> to run identical commands across <strong>many browsers</strong>*.</div>
+<div>* Selenium WebDriver has to be <strong>implemented</strong> for each browser, so it's <em>not available</em> for all browsers.</div>
+<div>However, <em>Selenium RC</em> (which has been supported in Perl for <strong>many, many years</strong>) generally works with <em>most anything</em>.</div>
+<div>Nevertheless, the <strong>Selenium WebDriver API</strong> tends to have <em>less confusing code</em> than <strong>Selenium RC API</strong>, so we'll use WebDriver here.</div>
+<div>Start by downloading <a href="http://search.cpan.org/~aivaturi/Selenium-Remote-Driver-0.15/lib/Selenium/Remote/Driver.pm">Selenium::Remote ::Driver</a> from <strong>CPAN</strong>.</div>
+<div>This takes a <em>long</em> time.</div>
+<div>While you wait, why not <em>sign up</em> with <a href="http://saucelabs.com">Sauce Labs</a> now?  The best part is</div>
+<div>it's <em>completely free</em> for <strong>open-source projects</strong>.</div>
+<div>Otherwise, there are different tiers of accounts for which you can pay monthly.</div>
+<div>You might as well also glance at the WebDriver CPAN module's <a href="http://search.cpan.org/~aivaturi/Selenium-Remote-Driver-0.15/lib/Selenium/Remote/Driver.pm">documentation</a>.</div>
+<div><em>OK,</em></div>
+<div>let's <em>dig in</em> to some code!</div>
+<div>We are going to <strong>automate</strong> a trip to the <em>Amazon</em>. ;)  Don't let 'em get your wallet!</div>
+<div>Walk yourself through <a href="http://openbrite.com/sauce-perl/wd-remote.htm">wd-remote.pl</a> to see a Selenium test in <em>Perl</em>.</div>
+<div>Or if Stephen is <em>in the room with you</em>, have him do it.</div>
+<div><strong>Cool, right?</strong></div>
+<div>OK, so that's great, we ran through a Website that's <em>already deployed</em>.</div>
+<div>But what about my <em>super-secret</em> next <strong>killer Website</strong> project only on my localhost?  How can I get into that?</div>
+<div>Let's see...!</div>
+<div>Open up <a href="http://openbrite.com/sauce-perl/wd-local.htm">wd-local.pl</a>.  It's pretty basic!  We're keeping this one simple.</div>
+<div>Make sure you have <strong>some sort of page</strong> that gets served up when you type <a href="http://localhost/">http://localhost/</a> into the browser, or else <em>this won't work</em>.</div>
+<div class="center"><img src="localhost.png" /></div>
+<div>Tweak the code to recognize your site's text.</div>
+<div>Now, go ahead and run the test.</div>
+<div>Haha, <em>Fooled You!!</em></div>
+<div>It's unlikely your localhost is exposed to the real world, so of course Sauce's VMs can't get to it.</div>
+<div>To resolve this, Sauce Labs created:</div>
+<div><a href="https://docs.saucelabs.com/reference/sauce-connect/#basic-setup">Sauce Connect</a></div>
+<div><em>Sauce Connect</em> is a command-line tool that starts <em>Selenium WebDriver</em> and <strong>makes a tunnel</strong> <em>for you</em> so</div>
+<div>you don't have to fumble around with <strong>exposing your</strong> <em>precious localhost</em> <strong>to the mean ol' World Wide Web</strong></div>
+<div>nor <em>poke holes</em> in your <em>corporate firewall</em>.</div>
+<div>Another beauty of <em>Sauce Connect</em> is <strong>multiple sub-accounts</strong> can share a tunnel,</div>
+<div>thus one (or very few) machines in the enterprise actually need to run Sauce Connect.</div>
+<div>So let's start Sauce Connect <strong>right now</strong> and see how our fate changes!</div>
+<div>At a minimum, you need to run <em>sc -u</em> <strong>your-username</strong> <em>-k</em> <strong>your-api-key</strong></div>
+<div>Let's see how it goes this time...</div>
+<div>There are many other options for <strong>sc</strong> that you can explore in <a href="https://docs.saucelabs.com/reference/sauce-connect/">their documentation</a>.</div>
+<div>Now, <strong>Sauce Labs</strong> does a great job <em>standing on its own</em>, but</div>
+<div>there are several <em>other exciting partner programs</em> you can use with <strong>Sauce Labs</strong>!</div>
+<div>For instance, <em>test your mobile apps</em> using <strong>Appium</strong>, which utilizes the Selenium WebDriver to run tests on <strong>Android</strong> & <strong>iOS</strong> applications.</div>
+<div>How many other test frameworks can you think of where you get to use the <em>same code</em> for testing <strong>both platforms?</strong></div>
+<div>Another interesting tool is <em>Applitools Eyes</em>, which can do <strong>comparisons</strong> of your Website's UI to mockups or older versions to <strong>examine differences</strong> and <strong>spot defects</strong>.</div>
+<div>Unfortunately, Applitools <strong>does not support Perl now.</strong><br />:-(<br />Maybe in the future.</div>
+<div><strong>YOU'RE A CHAMPION!</strong> Keep learning more!</div>
+<div>Thanks.</div>
+<div>Stephen Wylie, @swebceo, goshtastic.blogspot.com</div>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47757349-1', 'lyzidiamond.com');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
